@@ -1,6 +1,6 @@
 # Google Cloud Functions Example
 
-Small demo to demonstrate how to use Google Cloud Functions to do something useful: in this case, to send an email (intercepted with Ethereal) and write to a Firebase database. Should give you a pretty good picture of how a project would have to be setup in order to make this work.
+Demonstrate how to use Google Cloud Functions to do something useful: in this case, to send an email (intercepted with Ethereal) and write to a Firebase database. Should give you a pretty good picture of how a project would have to be setup in order to make this work.
 
 Setting up CORS and stuff can truly be a pain, especially if this is new to you. I hope this will make it easier to infer some kind of way of handling all of this to set up your own projects.
 
@@ -22,6 +22,7 @@ You need a few things first:
 
 * Create a Firebase realtime database
 * It's fine for testing and learning purposes to let the rights be in "Test Mode" where it's open to anything and anyone
+* Add your project name and keys to `.firebaserc` and `functions/index.js`
 
 ## Available commands
 
