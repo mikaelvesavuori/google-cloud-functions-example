@@ -4,12 +4,12 @@ const nodemailer = require('nodemailer');
 const cors = require('cors')({ origin: true });
 
 const config = {
-	{API_KEY}: 'AIzaSyDdTcpvpTIIAgDhSMiy2LBUNZWHbaYTG2A',
+	apiKey: '{API_KEY}',
 	authDomain: '{PROJECT}.firebaseapp.com',
 	databaseURL: 'https://{PROJECT}.firebaseio.com',
 	projectId: '{PROJECT}',
 	storageBucket: '{PROJECT}.appspot.com',
-	{MESSAGING_SENDER_ID}: '608289176034'
+	messagingSenderId: '{MESSAGING_SENDER_ID}'
 };
 let db = firebase.initializeApp(config);
 
