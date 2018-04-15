@@ -1,0 +1,63 @@
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<title>Google Cloud Functions Example – Using Firebase and Nodemailer</title>
+</head>
+
+<body>
+	<h1>Google Cloud Functions Example – Using Firebase and Nodemailer</h1>
+	<form>
+		<input placeholder='Write something to send' type='text' id='textInput'>
+		<input placeholder='email@domain.tld' type='email' id='emailInput'>
+		<input value='Submit' type='submit' id='submitButton'>
+	</form>
+
+	<div id='message'></div>
+
+	<script>
+		const textInput = document.querySelector('#textInput');
+		const emailInput = document.querySelector('#emailInput');
+		const submitButton = document.querySelector('#submitButton');
+
+		function writeMessageToDom(message) {
+			document.querySelector('#message').textContent = message;
+		}
+
+		submitButton.addEventListener('click', (event) => {
+			event.preventDefault();
+			writeMessageToDom(textInput.value);
+
+			if (textInput.value.length > 0 && emailInput.value.length > 0) {
+				const body = {
+					text: textInput.value,
+					email: emailInput.value
+				};
+
+				fetch('https://us-central1-{PROJECT}.cloudfunctions.net/sendEmail', {
+					method: 'POST',
+					body: JSON.stringify(body),
+					mode: 'cors',
+					headers: {
+						'Access-Control-Allow-Origin': '*'
+					}
+				})
+					.then(response => {
+						writeMessageToDom(`Sent ${textInput.value} to ${emailInput.value}`);
+						return true;
+					})
+					.catch(error => {
+						const errorMessage = `Error occured in client-side function 'doFetch()': ${error}`;
+						writeMessageToDom(errorMessage);
+						console.warn(errorMessage);
+						return false;
+					});
+			}
+			else {
+				return false;
+			}
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{
+	"name": "google-cloud-functions-example",
+	"author": "Mikael Vesavuori",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT"
+}
